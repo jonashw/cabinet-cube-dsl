@@ -16,7 +16,7 @@ not just "make sure Blender is connected."
 
 You need two things before any of this can render: an MCP-connected
 Blender, and this package's files on local disk. Neither is contained in
-the gist/files alone — a gist is text, not a running process.
+these files alone — a repo is text, not a running process.
 
 **1. Get an MCP-connected Blender running.** See
 [`blender-mcp-setup.md`](./blender-mcp-setup.md) — it's a separate
@@ -109,7 +109,7 @@ image at all:
 
 ```python
 import sys
-sys.path.insert(0, "/path/to/parent/of/cube_dsl")   # wherever step 5 cloned it
+sys.path.insert(0, "/path/to/parent/of/cube_dsl")   # wherever step 2 cloned it
 import cube_dsl.geometry as geo
 import cube_dsl.blender_adapter as ba
 import importlib; importlib.reload(geo); importlib.reload(ba)
