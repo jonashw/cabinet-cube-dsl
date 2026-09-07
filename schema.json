@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blender-mcp-demo/cube_dsl/schema.json",
+  "title": "Cabinet Cube DSL — Shape Spec",
+  "description": "Each key is an axis; each value is a list of positions in [-1, 1] along that axis. Every position inserts one solid plane perpendicular to that axis, spanning the other two axes' full [-1, 1] range. An axis absent from the object means no planes on that axis (fully open). x = left(-1)/right(+1), y = bottom(-1)/top(+1), z = back(-1)/front(+1, nearest the viewer).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "x": { "$ref": "#/$defs/axisPositions" },
+    "y": { "$ref": "#/$defs/axisPositions" },
+    "z": { "$ref": "#/$defs/axisPositions" }
+  },
+  "$defs": {
+    "axisPositions": {
+      "type": "array",
+      "items": { "type": "number", "minimum": -1, "maximum": 1 },
+      "uniqueItems": true
+    }
+  },
+  "examples": [
+    { },
+    { "y": [-1] },
+    { "y": [-1, 1] },
+    { "y": [-1, 1], "x": [-1, 1] },
+    { "y": [-1], "x": [-1, 1] },
+    { "y": [-1], "x": [-1, 1], "z": [-1, 1] },
+    { "x": [-1, 1], "y": [-1, 1], "z": [-1, 1] },
+    { "y": [-1, 0, 1] },
+    { "z": [-1], "y": [-1, 1] },
+    { "y": [1] },
+    { "x": [-1, 1], "y": [1], "z": [-1] },
+    { "x": [-1, -0.5, 0, 0.5, 1] }
+  ]
+}
